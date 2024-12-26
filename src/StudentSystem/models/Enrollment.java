@@ -18,11 +18,4 @@ public class Enrollment {
         System.out.println("Enrollment: Student ID " + studentRollNum + ", Course Code " + courseCode + ", Date " + enrollmentDate);
     }
 
-    public String getCourseCode() {
-        return courseCode;
-    }
-
-    public int getStudentRollNum() {
-        return studentRollNum;
-    }
 }

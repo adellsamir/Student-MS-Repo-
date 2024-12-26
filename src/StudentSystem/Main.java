@@ -69,7 +69,10 @@ public class Main {
             }
         }
 
-        new Student( name, email);
+        System.out.print("Enter student Level: ");
+        int studentLevel = scanner.nextInt();
+
+        new Student( name,studentLevel, email);
         System.out.println("Student added.");
     }
 
@@ -84,7 +87,9 @@ public class Main {
         System.out.print("Enter course credits: ");
         float credits = Float.parseFloat(scanner.next());
 
-        courseService.addCourse(new Course(courseCode, courseName, credits));
+        System.out.print("Enter Course value(Number of hours): ");
+        int courseValue = scanner.nextInt();
+        courseService.addCourse(new Course(courseCode, courseName,courseValue, credits));
     }
 
     private static void enrollStudent() {

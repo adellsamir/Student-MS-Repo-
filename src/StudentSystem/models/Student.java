@@ -10,21 +10,24 @@ public class Student extends Person implements PersonOperations {
     private static List<Student>allStudents=new ArrayList<>();
     private static int studentCounter=0;
     private int rollNum;
+    private int studentLevel;
 
 
 
-    public Student(String name,String email){
+    public Student(String name,int studentLevel,String email){
         super(name, email);
         studentCounter++;
       this.rollNum=studentCounter;
+      this.studentLevel=studentLevel;
       allStudents.add(this);
         System.out.println("number of current students: "+studentCounter);
     }
 
     // Constructor to recreate students (used when reading from a file)
-    public Student(int id, String name, String email) {
+    public Student(int rollNum, String name,int studentLevel, String email) {
         super(name, email);
-        this.rollNum = id;
+        this.rollNum = rollNum;
+        this.studentLevel=studentLevel;
         allStudents.add(this);
     }
 
@@ -39,12 +42,19 @@ public class Student extends Person implements PersonOperations {
 public static List<Student>getAllStudents(){
         return allStudents;
 }
+
+    public int getStudentLevel() {
+        return studentLevel;
+    }
+
     @Override
     public void getInfo(){
 
-        System.out.println("The Roll Number of Student " + getName() + " is: " + rollNum);
+        System.out.println("The Roll Number of Student " + getName() + " is: " + getRollNum());
 
         System.out.println( "And the Email of Student " + getName()+ " is: " + getEmail() );
+
+        System.out.println(  getName()+ "in Level: " + getStudentLevel()  );
     }
 
 }

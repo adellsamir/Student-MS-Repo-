@@ -19,7 +19,7 @@ public class CoursesServices implements CoursesOperations{
         } else {
             System.out.println("--- Course List ---");
             for (Course course : courses) {
-                System.out.print("course name: "+course.getCourseName()+'\n'+"course code: "+course.getCourseCode()+'\n'+"course cost: "+course.getCredits());
+                System.out.print("{\n course name: "+course.getCourseName()+'\n'+"course value: "+course.getNumberOfHours()+'\n'+"course code: "+course.getCourseCode()+'\n'+"course cost: "+course.getCredits()+"\n} ");
             }
         }
     }
