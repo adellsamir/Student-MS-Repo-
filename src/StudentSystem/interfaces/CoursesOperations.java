@@ -2,7 +2,7 @@ package StudentSystem.interfaces;
 import StudentSystem.models.Course;
 public interface CoursesOperations {
 
-    void getCourseInfo();
+    void getAllCoursesInfo();
 
     void addCourse(Course course);
 

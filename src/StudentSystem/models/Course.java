@@ -8,24 +8,12 @@ public class Course {
     private int numberOfHours;
     private float credits;
 
-    public Course(String courseCode,String courseName,int numberOfHours,float credits){
+    public Course(String courseCode,String courseName,int numberOfHours){
 
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.numberOfHours=numberOfHours;
-        this.credits = credits;
-    }
-
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public void setCredits(float credits) {
-        this.credits = credits;
+        this.credits =numberOfHours*1000;
     }
 
     public String getCourseCode() {

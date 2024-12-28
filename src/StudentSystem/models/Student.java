@@ -1,34 +1,35 @@
 package StudentSystem.models;
 
 import StudentSystem.interfaces.PersonOperations;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Student extends Person implements PersonOperations {
-
-    private static List<Student>allStudents=new ArrayList<>();
-    private static int studentCounter=0;
+    private static int studentCounter=101245;
     private int rollNum;
     private int studentLevel;
+    private float currentGPA=0;
 
 
+
+    public Student(String name,int studentLevel,String email,float gpa){
+        super(name, email);
+        studentCounter++;
+      this.rollNum=studentCounter;
+      this.studentLevel=studentLevel;
+      this.currentGPA=gpa;
+        System.out.println("number of current students: "+studentCounter);
+    }
 
     public Student(String name,int studentLevel,String email){
         super(name, email);
         studentCounter++;
       this.rollNum=studentCounter;
       this.studentLevel=studentLevel;
-      allStudents.add(this);
         System.out.println("number of current students: "+studentCounter);
     }
 
-    // Constructor to recreate students (used when reading from a file)
     public Student(int rollNum, String name,int studentLevel, String email) {
         super(name, email);
         this.rollNum = rollNum;
         this.studentLevel=studentLevel;
-        allStudents.add(this);
     }
 
     public int getRollNum() {
@@ -39,9 +40,9 @@ public class Student extends Person implements PersonOperations {
         return studentCounter;
     }
 
-public static List<Student>getAllStudents(){
-        return allStudents;
-}
+    public float getCurrentGPA() {
+        return currentGPA;
+    }
 
     public int getStudentLevel() {
         return studentLevel;
@@ -54,7 +55,10 @@ public static List<Student>getAllStudents(){
 
         System.out.println( "And the Email of Student " + getName()+ " is: " + getEmail() );
 
-        System.out.println(  getName()+ "in Level: " + getStudentLevel()  );
+        System.out.println(  getName()+ "in Level: " + getStudentLevel());
+
+        if (studentLevel != 1) System.out.println("And his overall GPA is: " +currentGPA );
     }
+
 
 }
