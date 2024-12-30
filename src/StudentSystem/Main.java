@@ -90,7 +90,6 @@ public class Main {
         System.out.println("Student added.");
     }
 
-
     private static void addCourse() {
         System.out.print("Enter course code: ");
         scanner.nextLine();

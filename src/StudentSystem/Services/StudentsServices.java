@@ -30,8 +30,10 @@ public class StudentsServices {
                     System.out.println(  student.getName()+ "in Level: " + student.getStudentLevel()  );
 
                     if (student.getStudentLevel() != 1) System.out.println("And his overall GPA is: " +student.getCurrentGPA() );
+                    return;
                 }
             }
+            System.out.println("The student do not exist in the system \n!-Please check if the roll number correct and try again-!");
         }
         }
 
@@ -40,9 +42,9 @@ public class StudentsServices {
         System.out.println("No students available.");
     }else{
         for (Student student : allStudents){
-                System.out.print( " {"+student.getName() + "ID: " + student.getRollNum());
+                System.out.print( " {\n"+student.getName() + " ID: " + student.getRollNum());
 
-                System.out.println( "Email: " + student.getEmail() );
+                System.out.println( "\nEmail: " + student.getEmail() );
 
                 System.out.println( "Student Level: " + student.getStudentLevel()  );
 
@@ -83,26 +85,24 @@ public class StudentsServices {
         while (choice != 1 && choice != 2) {
 
             System.out.println("Enter all student grades to calc his GPA or enter his Current GPA instead");
-
             System.out.println("chose 1 to: Enter GPA . \nchose 2 to: Enter all student grads .");
             choice = scanner.nextInt();
 
             if (choice == 1) {
                 System.out.println("Enter the GPA: ");
                 GPA = Float.parseFloat(scanner.next());
-            }
-
-            else if (choice == 2) {
+            } else if (choice == 2) {
 
                 double totalWeightedGPA = 0;
                 int totalCreditHours = 0;
-                for (int i = 1; i <=numberOfCourses ; i++) {
 
+                for (int i = 1; i <=numberOfCourses ; i++) {
                     System.out.println("Enter the code of Course number ("+ i +") :" );
                     scanner.nextLine();
                     String course1Code = scanner.nextLine();
 
                     int numberOfHours =coursesServices.getCourseVal(course1Code);
+                    if (numberOfHours == 0)return calcGPA(numberOfCourses);
 
                     System.out.println("Enter the grade for this subject: ");
                     int grade = scanner.nextInt();
@@ -112,14 +112,15 @@ public class StudentsServices {
                     totalWeightedGPA += subGPA * numberOfHours;
                     totalCreditHours += numberOfHours;
 
-                    System.out.println("GPA for this subject: " + subGPA);
+                    System.out.printf("GPA for this subject: %.2f ",subGPA);
                 }
 
         GPA = (float) (totalWeightedGPA / totalCreditHours);
+                System.out.println("Overall GPA = "+GPA);
 
             } else System.out.println("Wrong input please try again . ");
         }
-        return GPA;
+        return Math.round(GPA*100)/100.0f;
     }
 
     public  void exportStudentsData(){
@@ -133,7 +134,6 @@ public class StudentsServices {
             throw new RuntimeException(e);
         }
     }
-
 
     public   void readStudentsFromFile() {
         try (BufferedReader reader = new BufferedReader(new FileReader("students.txt"))) {

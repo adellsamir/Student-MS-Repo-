@@ -2,7 +2,7 @@ package StudentSystem.models;
 
 import StudentSystem.interfaces.PersonOperations;
 public class Student extends Person implements PersonOperations {
-    private static int studentCounter=101245;
+    private static int studentCounter=0;
     private int rollNum;
     private int studentLevel;
     private float currentGPA=0;

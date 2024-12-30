@@ -13,7 +13,7 @@ public class Course {
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.numberOfHours=numberOfHours;
-        this.credits =numberOfHours*1000;
+        this.credits =numberOfHours*100;
     }
 
     public String getCourseCode() {

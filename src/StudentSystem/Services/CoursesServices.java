@@ -32,14 +32,14 @@ public class CoursesServices implements CoursesOperations{
     public int getCourseVal(String courseCode) {
         if (courses.isEmpty()) {
             System.out.println("No courses available.");
-            return 0;
+            return -1;
         }
             for (Course course : courses) {
                 if (course.getCourseCode().equals(courseCode)){
                     return course.getNumberOfHours();
                 }
             }
-        System.out.println("There is no course with this code .");
+        System.out.println("!-There is no course with this code-! \n !-Please check if the course code correct and try again-!");
       return 0;
     }
 
@@ -49,7 +49,7 @@ public class CoursesServices implements CoursesOperations{
         } else {
             System.out.println("--- Course List ---");
             for (Course course : courses) {
-                System.out.print("{\n "+course.getCourseName()+'\n'+"course value: "+course.getNumberOfHours()+'\n'+"course code: "+course.getCourseCode()+'\n'+"course cost: "+course.getCredits()+" $"+"\n} ");
+                System.out.print("\n{\n "+course.getCourseName()+'\n'+"course value: "+course.getNumberOfHours()+'\n'+"course code: "+course.getCourseCode()+'\n'+"course cost: "+course.getCredits()+" $"+"\n} ");
             }
         }
     }
